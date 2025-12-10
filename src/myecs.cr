@@ -960,7 +960,7 @@ module ECS
       else
         if @all_of.size > 0
           # we use all_of and find shortest pool
-          smallest_all = @all_of.min_by { |typ| @world.base_pool_for(typ).total_count }
+          smallest_all = @all_of.min_by { |typ| @world.base_pool_for(typ).total_count.as(Int32) }
           smallest_all_count = @world.base_pool_for(smallest_all).total_count
           return if smallest_all_count == 0
         end
