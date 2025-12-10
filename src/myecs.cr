@@ -24,6 +24,11 @@ module ECS
         {{ECS::COMP_INDICES[@type]}}
       end
     end
+
+    @[AlwaysInline]
+    def self.component_index
+      raise Exception.new("ECS::Component is abstract, use a concrete component subclass")
+    end
   end
 
   # Represents component that should exist for one frame and be deleted after.
