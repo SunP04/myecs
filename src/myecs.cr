@@ -682,10 +682,11 @@ module ECS
     
       {% end %}
 
-      @[AlwaysInline]
-      protected def base_pool_for(typ : ComponentType)
-        @pools[typ.component_index]
-      end
+       @[AlwaysInline]
+       protected def base_pool_for(typ : ComponentType)
+         raise Exception.new("ECS::Component is abstract, use a concrete component subclass") if typ == Component.class
+         @pools[typ.component_index]
+       end
 
       # Non-allocating version of `stats`. Yields component names and count of corresponding components
       # ```
